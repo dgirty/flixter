@@ -1,8 +1,12 @@
 class LessonsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :require_authorized_for_current_lesson, only: [:show]
+
   def show
   end
   
   private
+
 
   helper_method :current_lesson
   def current_lesson 
