@@ -18,8 +18,9 @@
 
       <br />
       <br />
+
       <% if current_user %>
-       <% current_user.enrolled_in?(@course) %>
+       <% if current_user.enrolled_in?(@course) %>
         <h3 class="badge badge-info">You Are Enrolled!</h3>
       <% else %>
        <% if @course.free? %>
@@ -32,7 +33,7 @@
                 data-description="<%= @course.title %> (<%= number_to_currency @course.cost %>)"
                 data-amount="<%= (@course.cost * 100).to_i %>"
                 data-locale="auto"></script>
-       <% end %>
+        <% end %>
       <% end %>
      <% end %>
     <% else %>
@@ -53,7 +54,7 @@
           <%= section.title %>
         </h3>
         <div class="row">
-          <% section.lessons.rank(:row_order).each do |lesson| %>
+          <% section.lessons.each do |lesson|%>
             <div class="col-12 col-sm-6">
               <div class="lesson text-center">
                 <br />
